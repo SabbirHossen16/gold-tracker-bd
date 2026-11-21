@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>সোনার দাম ট্র্যাকার: বাংলাদেশ</title>
+<meta name="description" content="বাজুস নির্ধারিত সোনার দাম, লাইভ বিশ্ববাজার দাম এবং পরবর্তী মূল্য পরিবর্তনের সম্ভাবনা।">
+<meta property="og:title" content="সোনার দাম ট্র্যাকার: বাংলাদেশ">
+<meta property="og:description" content="বাজুসের দাম প্রতি ঘণ্টায় যাচাই, বিশ্ববাজারের দাম প্রতি মিনিটে হালনাগাদ।">
+<meta name="theme-color" content="#c9971c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&family=Noto+Serif+Bengali:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf8f3;--panel:#ffffff;--fg:#1d1b16;--muted:#6b665b;--line:#e6e0d2;--gold:#c9971c;--gold2:#8a6d1f;--good:#1f7a4d;--bad:#b4540f;--grid:#efe9dc;--ring:#4f63d2;--shadow:0 6px 20px rgba(0,0,0,.08)}
+@media (prefers-color-scheme:dark){:root{--bg:#14130f;--panel:#1e1c17;--fg:#f2efe6;--muted:#a59f90;--line:#38342a;--gold:#e0b84a;--gold2:#e0b84a;--good:#4cc28a;--bad:#f0954a;--grid:#2b2820;--ring:#8ea0ff;--shadow:0 6px 20px rgba(0,0,0,.45)}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Noto Sans Bengali",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.serif{font-family:"Noto Serif Bengali","Noto Sans Bengali",Georgia,serif;font-weight:500}
+.wrap{max-width:960px;margin:0 auto;padding:22px 16px 48px;display:flex;flex-direction:column;gap:30px}
+h1{font-size:1.85rem;margin:0;line-height:1.3}
+h2{font-size:1.15rem;margin:0 0 4px}
+.sub{color:var(--muted);font-size:.88rem;margin:0 0 12px}
+.lede{margin:10px 0 0;font-size:1.05rem;max-width:46em}
+.pill{display:inline-flex;align-items:center;gap:7px;font-size:.82rem;color:var(--muted);border:1px solid var(--line);border-radius:14px;padding:4px 12px;margin-top:12px;background:var(--panel);line-height:1.4}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--muted);flex:none}
+.dot.live{background:var(--good);animation:pulse 2s infinite}
+.dot.off{background:var(--bad)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(31,122,77,.55)}70%{box-shadow:0 0 0 7px rgba(31,122,77,0)}100%{box-shadow:0 0 0 0 rgba(31,122,77,0)}}
+@media (prefers-reduced-motion:reduce){.dot.live{animation:none}}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;min-width:0}
+.wide{grid-column:1/-1}
+.label{font-size:.84rem;color:var(--muted);margin:0 0 4px}
+.big{font-size:2.4rem;line-height:1.2}
+.mid{font-size:1.4rem;line-height:1.35}
+.note{font-size:.84rem;color:var(--muted);margin:6px 0 0}
+.good{color:var(--good)}.bad{color:var(--bad)}
+.verdict{font-size:1.55rem;margin:0 0 8px}
+.chart{position:relative;min-height:240px}
+.chart svg{display:block;width:100%;overflow:visible}
+.chart text{fill:var(--muted);font-size:11px;font-family:"Noto Sans Bengali",system-ui,sans-serif}
+.tip{position:absolute;top:0;pointer-events:none;background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:8px;padding:6px 9px;font-size:.8rem;white-space:nowrap;z-index:2}
+.tip b{display:block}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--muted);margin-top:8px}
+.sw{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;margin-right:6px}
+.swr{display:inline-block;width:10px;height:10px;border-radius:50%;border:2px solid var(--ring);vertical-align:middle;margin-right:6px}
+form,.form{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end}
+label.f{display:flex;flex-direction:column;font-size:.84rem;color:var(--muted);gap:4px}
+input,select,button{font:inherit}
+input,select{padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);width:10.5em}
+button{padding:8px 14px;border-radius:8px;border:1px solid var(--gold2);background:var(--gold);color:#1d1b16;cursor:pointer;font-weight:600}
+button.ghost{background:transparent;color:var(--fg);border-color:var(--line);font-weight:400}
+dl{display:grid;gap:6px;margin:14px 0 0}
+dl div{display:flex;justify-content:space-between;gap:12px}
+dt{color:var(--muted)}dd{margin:0}
+.total{border-top:1px solid var(--line);padding-top:6px;font-weight:700}
+.total dt{color:var(--fg)}
+details>summary{cursor:pointer;font-weight:600}
+.notes ul{padding-left:1.2em;color:var(--muted);font-size:.88rem;margin:10px 0 0}
+.notes li{margin-bottom:6px}
+iframe{width:100%;height:640px;border:1px solid var(--line);border-radius:10px;background:#fff;margin-top:10px}
+a{color:var(--gold2)}
+.btnlink{display:inline-block;padding:8px 14px;border-radius:8px;border:1px solid var(--line);background:var(--panel);text-decoration:none;color:var(--fg);margin:0 8px 8px 0}
+.msg{font-size:.86rem;color:var(--muted);margin:10px 0 0;min-height:1.2em}
+footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+<header>
+  <h1 class="serif">সোনার দাম ট্র্যাকার: বাংলাদেশ</h1>
+  <p class="lede" id="lede">দাম লোড হচ্ছে...</p>
+  <span class="pill"><span class="dot" id="liveDot"></span><span id="liveText">লাইভ দামের সঙ্গে সংযোগ হচ্ছে...</span></span>
+</header>
+
+<section id="rates">
+  <h2>বাজুস নির্ধারিত দাম</h2>
+  <p class="sub">প্রতি ভরি (১১.৬৬৪ গ্রাম), ভ্যাটসহ, মজুরি আলাদা। কার্যকর: <span id="effDate">-</span> থেকে।</p>
+  <div class="grid">
+    <div class="card wide">
+      <p class="label">২২ ক্যারেট</p>
+      <div class="big serif">৳<span id="k22">-</span></div>
+      <p class="note"><span id="lastChg">-</span> প্রতি গ্রাম ৳<span id="g22">-</span>।</p>
+    </div>
+    <div class="card"><p class="label">২১ ক্যারেট</p><div class="mid serif">৳<span id="k21">-</span></div><p class="note">প্রতি গ্রাম ৳<span id="g21">-</span></p></div>
+    <div class="card"><p class="label">১৮ ক্যারেট</p><div class="mid serif">৳<span id="k18">-</span></div><p class="note">প্রতি গ্রাম ৳<span id="g18">-</span></p></div>
+    <div class="card"><p class="label">সনাতন পদ্ধতি</p><div class="mid serif">৳<span id="kt">-</span></div><p class="note">প্রতি গ্রাম ৳<span id="gt">-</span></p></div>
+  </div>
+  <p class="note" id="rateSource">-</p>
+</section>
+
+<section id="outlook">
+  <h2>দাম কি আরও কমবে?</h2>
+  <p class="sub">বাজুস সাধারণত এক দিন পরে বিশ্ববাজারের দাম অনুসরণ করে। লাইভ বিশ্ববাজার দাম দিয়ে দুটির তুলনা করা হয়েছে।</p>
+  <div class="card">
+    <p class="verdict serif" id="verdict">-</p>
+    <p id="impliedText" style="margin:0 0 14px">-</p>
+    <div class="grid">
+      <div><p class="label">বিশ্ববাজার দাম এমন থাকলে বাজুসের পরবর্তী পরিবর্তন</p><div class="mid serif" id="nextChg">-</div></div>
+      <div><p class="label">এক সপ্তাহে ২২ ক্যারেটের সম্ভাব্য সীমা (৩ ভাগের ২ ভাগ সম্ভাবনা)</p><div class="mid serif" id="range">-</div></div>
+    </div>
+    <p class="note" id="method">-</p>
+  </div>
+</section>
+
+<section id="world">
+  <h2>বিশ্ববাজারে সোনার দাম (লাইভ)</h2>
+  <p class="sub">প্রতি ট্রয় আউন্স, মার্কিন ডলারে। পেজ খোলা থাকলে প্রতি মিনিটে হালনাগাদ হয়।</p>
+  <div class="grid">
+    <div class="card"><p class="label">এখনকার দাম</p><div class="mid serif">$<span id="spot">-</span></div><p class="note" id="spotChg">-</p></div>
+    <div class="card"><p class="label">গত এক সপ্তাহে</p><div class="mid serif" id="spotWeek">-</div><p class="note" id="spotWeekNote">-</p></div>
+    <div class="card"><p class="label">বিশ্ববাজার অনুযায়ী ১ ভরি ২২ ক্যারেটের মূল্য</p><div class="mid serif">৳<span id="worldVal">-</span></div><p class="note">প্রতি ডলার ৳<span id="fx">-</span> ধরে</p></div>
+    <div class="card"><p class="label">বিশ্ববাজার মূল্যের চেয়ে বাংলাদেশে বেশি</p><div class="mid serif"><span id="prem">-</span>%</div><p class="note">ভ্যাট ও স্থানীয় বাজারের প্রিমিয়াম</p></div>
+  </div>
+</section>
+
+<section id="history">
+  <h2>বাজুস ২২ ক্যারেটের দাম</h2>
+  <p class="sub">প্রতিটি ধাপ বাজুসের একটি মূল্য পরিবর্তন। গোল চিহ্নটি দেখায় বিশ্ববাজারের এখনকার দাম অনুযায়ী দাম কোথায় হওয়ার কথা, সঙ্গে এক সপ্তাহের সম্ভাব্য সীমা।</p>
+  <div class="card">
+    <div class="chart" id="chartBajus"></div>
+    <div class="legend"><span><span class="sw" style="background:var(--gold)"></span>বাজুস ২২ ক্যারেট (প্রতি ভরি)</span><span><span class="swr"></span>বিশ্ববাজার অনুযায়ী এখনকার দাম</span></div>
+  </div>
+</section>
+
+<section id="spotHistory">
+  <h2>বিশ্ববাজারে সোনার দাম, গত ৩ মাস</h2>
+  <p class="sub">দৈনিক ক্লোজিং দাম, প্রতি আউন্স (মার্কিন ডলার)।</p>
+  <div class="card"><div class="chart" id="chartSpot"></div></div>
+</section>
+
+<section id="calculator">
+  <h2>কত খরচ হবে?</h2>
+  <p class="sub">আজকের বাজুস দাম × ওজন, সঙ্গে বাজুস নির্ধারিত ন্যূনতম <span id="makingPct">৬</span>% মজুরি। দোকান এর বেশি নিতে পারে।</p>
+  <div class="card">
+    <div class="form">
+      <label class="f">ক্যারেট<select id="cGrade"><option value="k22">২২ ক্যারেট</option><option value="k21">২১ ক্যারেট</option><option value="k18">১৮ ক্যারেট</option><option value="trad">সনাতন পদ্ধতি</option></select></label>
+      <label class="f">ওজন<input id="cWeight" type="number" min="0" step="0.001" value="1" inputmode="decimal"></label>
+      <label class="f">একক<select id="cUnit"><option value="bhori">ভরি</option><option value="ana">আনা</option><option value="gram">গ্রাম</option></select></label>
+    </div>
+    <p class="note">১ ভরি = ১১.৬৬৪ গ্রাম = ১৬ আনা। ১ আনা = ০.৭২৯ গ্রাম।</p>
+    <dl>
+      <div><dt>সোনার মূল্য</dt><dd>৳<span id="cValue">-</span></dd></div>
+      <div><dt>মজুরি</dt><dd>৳<span id="cMaking">-</span></dd></div>
+      <div class="total"><dt>আনুমানিক মোট</dt><dd>৳<span id="cTotal">-</span></dd></div>
+    </dl>
+  </div>
+</section>
+
+<section id="check">
+  <h2>আজকের বাজুস দাম যাচাই করুন</h2>
+  <p class="sub">বাজুসের অফিসিয়াল ওয়েবসাইট অন্য পেজে দেখানোর অনুমতি দেয় না, তাই সেটি নতুন ট্যাবে খুলবে। goldratebangladesh.today নামের একটি স্বতন্ত্র সাইট বাজুসের দাম প্রকাশ করে, সেটি এখানেই দেখা যাবে।</p>
+  <a class="btnlink" href="https://www.bajus.org/gold-price" target="_blank" rel="noopener">বাজুসের অফিসিয়াল দাম</a>
+  <a class="btnlink" href="https://goldratebangladesh.today/" target="_blank" rel="noopener">goldratebangladesh.today</a>
+  <details id="embedBox" class="card" style="margin-top:6px">
+    <summary>goldratebangladesh.today এখানে দেখুন</summary>
+    <iframe id="embedFrame" title="আজকের সোনার দাম" referrerpolicy="no-referrer"></iframe>
+  </details>
+</section>
+
+<section id="update">
+  <h2>বাজুস কি দাম বদলেছে?</h2>
+  <p class="sub">স্বয়ংক্রিয় যাচাইয়ের আগেই নতুন দাম দেখলে এখানে লিখুন, পুরো পেজ নতুন করে হিসাব করবে। এটি শুধু এই ব্রাউজারে সংরক্ষিত থাকবে।</p>
+  <div class="card">
+    <form id="bajusForm">
+      <label class="f">কার্যকর তারিখ<input type="date" id="fDate" required></label>
+      <label class="f">২২ ক্যারেট (প্রতি ভরি)<input type="number" id="f22" min="50000" max="1000000" step="1" inputmode="numeric" required></label>
+      <label class="f">২১ ক্যারেট (ঐচ্ছিক)<input type="number" id="f21" min="50000" max="1000000" step="1" inputmode="numeric"></label>
+      <label class="f">১৮ ক্যারেট (ঐচ্ছিক)<input type="number" id="f18" min="50000" max="1000000" step="1" inputmode="numeric"></label>
+      <label class="f">সনাতন (ঐচ্ছিক)<input type="number" id="fTrad" min="30000" max="1000000" step="1" inputmode="numeric"></label>
+      <button type="submit">সংরক্ষণ করুন</button>
+      <button type="button" class="ghost" id="fReset">আমার দেওয়া দাম মুছুন</button>
+    </form>
+    <p class="msg" id="fMsg"></p>
+  </div>
+</section>
+
+<details class="notes" id="notes">
+  <summary>এই পেজ কীভাবে পড়বেন</summary>
+  <ul>
+    <li>বাংলাদেশ জুয়েলার্স অ্যাসোসিয়েশন (বাজুস) সারা দেশের গয়নার সোনার দাম নির্ধারণ করে। স্থানীয় বাজারে খাঁটি (তেজাবি) সোনার দাম বদলালে বাজুস দাম বদলায়, আর তেজাবি সোনার দাম বিশ্ববাজারকে অনুসরণ করে। নতুন দাম সাধারণত সকাল ১০টা থেকে কার্যকর হয়।</li>
+    <li>দামে ভ্যাট অন্তর্ভুক্ত। জুয়েলাররা এর ওপর মজুরি যোগ করে, তাই দোকানের বিল এই দামের চেয়ে বেশি হয়।</li>
+    <li>পূর্বাভাস অংশটি লাইভ বিশ্ববাজার দামের সঙ্গে বাজুসের সাম্প্রতিক পরিবর্তনগুলোর তুলনা করে। বিশ্ববাজার দাম এমন থাকলে বাজুস কোন দিকে যেতে পারে, সেটি দেখায়। এটি ভবিষ্যৎ নিশ্চিত করে বলতে পারে না; বাজুস অপেক্ষা করতে পারে বা ভিন্ন পরিমাণে দাম বদলাতে পারে।</li>
+    <li>এক সপ্তাহের সীমা হলো স্বাভাবিক ওঠানামার সীমা, নিশ্চিত পূর্বাভাস নয়: প্রতি ৩ সপ্তাহের ১ সপ্তাহে দাম এর বাইরে যেতে পারে।</li>
+    <li>বাজুসের দাম প্রতি ঘণ্টায় স্বয়ংক্রিয়ভাবে যাচাই করা হয় (goldratebangladesh.today থেকে, যা বাজুসের দাম প্রকাশ করে)। বিশ্ববাজার দাম: gold-api.com (বিকল্প xaus.com); দৈনিক ইতিহাস: xaus.com; ডলারের দাম: open.er-api.com। কোনো উৎস কাজ না করলে পেজে সংরক্ষিত শেষ দাম দেখানো হয়।</li>
+  </ul>
+</details>
+
+<footer>শুধু তথ্যের জন্য, আর্থিক পরামর্শ নয়। দাম দ্রুত বদলাতে পারে; কেনার আগে জুয়েলারের সঙ্গে নিশ্চিত হোন।</footer>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  var REPO = 'SabbirHossen16/gold-tracker-bd';
+  var BHORI_G = 11.664, OZ_G = 31.1035, MAKING = 0.06, DAY = 864e5;
+  var FALLBACK_FX = 124.73;
+  // Built-in copy of the BAJUS data, used until data/bajus.json loads
+  var BUILT_IN = {
+    checked_at: '2026-11-21T12:00:00Z',
+    latest: {date: '2026-11-20', k22: 201146, k21: 192106, k18: 164987, trad: 134836},
+    history: [
+      ['2026-01-29', 286001], ['2026-10-05', 229081], ['2026-10-09', 231297], ['2026-10-13', 228031],
+      ['2026-10-22', 226340], ['2026-10-23', 224182], ['2026-10-25', 220858], ['2026-10-28', 223074],
+      ['2026-10-29', 224707], ['2026-10-30', 223074], ['2026-10-31', 217592], ['2026-11-02', 220858],
+      ['2026-11-04', 224182], ['2026-11-05', 229664], ['2026-11-06', 226923], ['2026-11-11', 224182],
+      ['2026-11-12', 221966], ['2026-11-13', 219808], ['2026-11-14', 217592], ['2026-11-18', 215376],
+      ['2026-11-19', 212110], ['2026-11-20', 201146]
+    ]
+  };
+  // Backup world gold daily closes (USD/oz, weekdays), used only if the live history feed fails
+  var FALLBACK_SPOT = [
+    ['2026-09-21', 4343.56], ['2026-09-22', 4355.48], ['2026-09-23', 4287.51], ['2026-09-24', 4278.52], ['2026-09-25', 4287.25],
+    ['2026-09-28', 4115.27], ['2026-09-29', 4182.80], ['2026-09-30', 4157.34], ['2026-10-01', 4178.86], ['2026-10-02', 4142.96],
+    ['2026-10-05', 4139.89], ['2026-10-06', 4164.35], ['2026-10-07', 4111.05], ['2026-10-08', 4134.93], ['2026-10-09', 4194.46],
+    ['2026-10-12', 4171.69], ['2026-10-13', 4157.95], ['2026-10-14', 4105.70], ['2026-10-15', 4156.11], ['2026-10-16', 4168.17],
+    ['2026-10-19', 4141.53], ['2026-10-20', 4120.80], ['2026-10-21', 4134.54], ['2026-10-22', 4026.14], ['2026-10-23', 4000.88],
+    ['2026-10-26', 4013.44], ['2026-10-27', 4062.29], ['2026-10-28', 4070.21], ['2026-10-29', 4022.12], ['2026-10-30', 3883.59],
+    ['2026-11-02', 3944.31], ['2026-11-03', 3919.20], ['2026-11-04', 4058.02], ['2026-11-05', 4114.40], ['2026-11-06', 4063.33],
+    ['2026-11-09', 4134.03], ['2026-11-10', 4030.42], ['2026-11-11', 3987.03], ['2026-11-12', 3883.66], ['2026-11-13', 3875.68],
+    ['2026-11-16', 3864.44], ['2026-11-17', 3846.80], ['2026-11-18', 3723.73], ['2026-11-19', 3666.87], ['2026-11-20', 3520.57]
+  ];
+
+  var state = {spot: null, spotTime: null, spotSrc: '', spotOk: null, hist: null, fx: null, bajus: null, lastRun: null};
+
+  // ---------- helpers ----------
+  var BN = '০১২৩৪৫৬৭৮৯';
+  var MONTHS = ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'];
+  function bn(s) { return String(s).replace(/[0-9]/g, function (d) { return BN[+d]; }); }
+  function $(id) { return document.getElementById(id); }
+  function setText(id, v) { var el = $(id); if (el) el.textContent = v; }
+  function dayMs(d) { return Date.parse(d + 'T00:00:00Z'); }
+  function fmt(v, dp) { if (!isFinite(v)) return '-'; return bn(Number(v).toLocaleString('en-IN', {minimumFractionDigits: dp || 0, maximumFractionDigits: dp || 0})); }
+  var MONTHS_GEN = ['জানুয়ারির', 'ফেব্রুয়ারির', 'মার্চের', 'এপ্রিলের', 'মে মাসের', 'জুনের', 'জুলাইয়ের', 'আগস্টের', 'সেপ্টেম্বরের', 'অক্টোবরের', 'নভেম্বরের', 'ডিসেম্বরের'];
+  function fmtDateOf(d) { var x = new Date(dayMs(d)); return bn(x.getUTCDate()) + ' ' + MONTHS_GEN[x.getUTCMonth()]; }
+  function fmtDate(d, withYear) { var x = new Date(dayMs(d)); return bn(x.getUTCDate()) + ' ' + MONTHS[x.getUTCMonth()] + (withYear ? ' ' + bn(x.getUTCFullYear()) : ''); }
+  function fmtTime(t) { var h = t.getHours(), m = t.getMinutes(); return bn((h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m); }
+  function fmtWhen(t) { var now = new Date(); var sameDay = t.toDateString() === now.toDateString(); return (sameDay ? 'আজ ' : fmtDate(t.toISOString().slice(0, 10)) + ', ') + fmtTime(t); }
+  function median(a) { if (!a.length) return NaN; var s = a.slice().sort(function (x, y) { return x - y; }); var i = Math.floor(s.length / 2); return s.length % 2 ? s[i] : (s[i - 1] + s[i]) / 2; }
+  function roundTo(v, step) { return Math.round(v / step) * step; }
+  function tone(el, good) { if (!el) return; el.classList.toggle('good', good === true); el.classList.toggle('bad', good === false); }
+  function todayUTC() { return new Date().toISOString().slice(0, 10); }
+  function getJSON(url, ms) {
+    var ctl = ('AbortController' in window) ? new AbortController() : null;
+    var t = setTimeout(function () { if (ctl) ctl.abort(); }, ms || 12000);
+    return fetch(url, {signal: ctl ? ctl.signal : undefined, cache: 'no-store'}).then(function (r) {
+      clearTimeout(t); if (!r.ok) throw new Error('HTTP ' + r.status); return r.json();
+    }, function (e) { clearTimeout(t); throw e; });
+  }
+
+  // ---------- your own BAJUS entries (this browser only) ----------
+  var LS = 'gtBajusUser.v1';
+  var memoryUser = null;
+  function loadUser() {
+    if (memoryUser) return memoryUser.slice();
+    try {
+      var v = JSON.parse(localStorage.getItem(LS) || '[]');
+      return Array.isArray(v) ? v.filter(function (e) { return e && /^\d{4}-\d{2}-\d{2}$/.test(e.date) && e.k22 > 0; }) : [];
+    } catch (e) { return []; }
+  }
+  function saveUser(a) { try { localStorage.setItem(LS, JSON.stringify(a)); return true; } catch (e) { return false; } }
+
+  function bajusData() { return state.bajus || BUILT_IN; }
+  function bajusSeries() {
+    var map = {};
+    bajusData().history.forEach(function (r) { map[r[0]] = {date: r[0], price: +r[1], user: false}; });
+    var latest = bajusData().latest;
+    loadUser().forEach(function (e) { if (e.date > latest.date) map[e.date] = {date: e.date, price: +e.k22, user: true}; });
+    return Object.keys(map).sort().map(function (k) { return map[k]; });
+  }
+  function latestRates() {
+    var L = bajusData().latest;
+    var u = loadUser().sort(function (a, b) { return a.date < b.date ? 1 : -1; })[0];
+    if (u && u.date > L.date) {
+      var f = u.k22 / L.k22;
+      return {date: u.date, user: true, k22: +u.k22,
+        k21: u.k21 ? +u.k21 : roundTo(L.k21 * f, 1), k18: u.k18 ? +u.k18 : roundTo(L.k18 * f, 1), trad: u.trad ? +u.trad : roundTo(L.trad * f, 1),
+        est: {k21: !u.k21, k18: !u.k18, trad: !u.trad}};
+    }
+    return {date: L.date, user: false, k22: +L.k22, k21: +L.k21, k18: +L.k18, trad: +L.trad, est: {}};
+  }
+
+  // ---------- live data ----------
+  function history() { return state.hist || FALLBACK_SPOT.map(function (r) { return {date: r[0], usd: r[1]}; }); }
+  function spotNow() {
+    if (state.spot) return {usd: state.spot, live: true};
+    var h = history(); return {usd: h[h.length - 1].usd, live: false, date: h[h.length - 1].date};
+  }
+  function loadSpot() {
+    return getJSON('https://api.gold-api.com/price/XAU').then(function (j) {
+      if (!(j && +j.price > 0)) throw new Error('bad');
+      state.spot = +j.price; state.spotTime = new Date(); state.spotSrc = 'gold-api.com'; state.spotOk = true;
+    }).catch(function () {
+      return getJSON('https://xaus.com/api/v1/spot').then(function (j) {
+        if (!(j && +j.spot_usd_oz > 0)) throw new Error('bad');
+        state.spot = +j.spot_usd_oz; state.spotTime = new Date(); state.spotSrc = 'xaus.com'; state.spotOk = true;
+      });
+    }).catch(function () { state.spotOk = false; }).then(render);
+  }
+  function loadHist() {
+    return getJSON('https://xaus.com/api/v1/history?days=120').then(function (j) {
+      var pts = ((j && j.points) || []).map(function (p) { return {date: String(p.d).slice(0, 10), usd: +p.c}; })
+        .filter(function (p) { return /^\d{4}-\d{2}-\d{2}$/.test(p.date) && p.usd > 0; })
+        .sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+      if (pts.length >= 20) state.hist = pts;
+    }).catch(function () {}).then(render);
+  }
+  function loadFx() {
+    return getJSON('https://open.er-api.com/v6/latest/USD').then(function (j) {
+      var r = j && j.rates && +j.rates.BDT; if (!(r > 50)) throw new Error('bad'); state.fx = r;
+    }).catch(function () {
+      return getJSON('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json').then(function (j) {
+        var r = j && j.usd && +j.usd.bdt; if (!(r > 50)) throw new Error('bad'); state.fx = r;
+      });
+    }).catch(function () {}).then(render);
+  }
+  function validBajus(j) {
+    return j && j.latest && /^\d{4}-\d{2}-\d{2}$/.test(j.latest.date) && +j.latest.k22 > 50000 && Array.isArray(j.history) && j.history.length > 3;
+  }
+  function loadBajus() {
+    var raw = 'https://raw.githubusercontent.com/' + REPO + '/main/data/bajus.json?t=' + Date.now();
+    return getJSON(raw).then(function (j) { if (!validBajus(j)) throw new Error('bad'); state.bajus = j; })
+      .catch(function () { return getJSON('data/bajus.json?t=' + Date.now()).then(function (j) { if (validBajus(j)) state.bajus = j; }); })
+      .catch(function () {}).then(render);
+  }
+  function loadLastRun() {
+    return getJSON('https://api.github.com/repos/' + REPO + '/actions/workflows/update-bajus.yml/runs?per_page=1&status=success').then(function (j) {
+      var r = j && j.workflow_runs && j.workflow_runs[0];
+      if (r && r.updated_at) state.lastRun = new Date(r.updated_at);
+    }).catch(function () {}).then(render);
+  }
+
+  // ---------- calculations ----------
+  function compute() {
+    var series = bajusSeries(), rates = latestRates(), h = history();
+    function closeBefore(d) {
+      for (var i = h.length - 1; i >= 0; i--) {
+        if (h[i].date < d) return (dayMs(d) - dayMs(h[i].date)) <= 4 * DAY ? h[i].usd : NaN;
+      }
+      return NaN;
+    }
+    var recentChanges = series.slice().reverse().map(function (r) { return {price: r.price, basis: closeBefore(r.date)}; })
+      .filter(function (r) { return r.basis > 0; }).slice(0, 9);
+    var ratio = median(recentChanges.map(function (r) { return r.price / r.basis; }));
+    var sp = spotNow();
+    var implied = sp.usd * ratio, cur = rates.k22, gap = (implied / cur - 1) * 100;
+    var wk = h.filter(function (p) { var w = new Date(dayMs(p.date)).getUTCDay(); return w > 0 && w < 6; }).slice(-16);
+    var rets = [];
+    for (var i = 1; i < wk.length; i++) if ((dayMs(wk[i].date) - dayMs(wk[i - 1].date)) <= 4 * DAY) rets.push(Math.log(wk[i].usd / wk[i - 1].usd));
+    var mean = rets.reduce(function (a, x) { return a + x; }, 0) / (rets.length || 1);
+    var sd = rets.length > 1 ? Math.sqrt(rets.reduce(function (a, x) { return a + (x - mean) * (x - mean); }, 0) / (rets.length - 1)) : NaN;
+    var week = sd * Math.sqrt(5);
+    var today = todayUTC(), prev = null, ago = null;
+    for (var k = h.length - 1; k >= 0; k--) { if (!prev && h[k].date < today) prev = h[k]; if (!ago && dayMs(today) - dayMs(h[k].date) >= 7 * DAY) ago = h[k]; }
+    var last = series[series.length - 1], before = series[series.length - 2];
+    var streak = 0;
+    for (var s = series.length - 1; s > 0; s--) { if (series[s].price < series[s - 1].price) streak++; else break; }
+    var win = series.filter(function (r) { return dayMs(last.date) - dayMs(r.date) <= 30 * DAY; });
+    var peak = win.reduce(function (m, r) { return r.price > m.price ? r : m; }, win[0]);
+    var fx = state.fx || FALLBACK_FX, world = sp.usd * (BHORI_G * 22 / 24 / OZ_G) * fx;
+    return {series: series, rates: rates, hist: h, sp: sp, ratio: ratio, nRatio: recentChanges.length, implied: implied, gap: gap,
+      sd: sd, lo: implied * Math.exp(-week), hi: implied * Math.exp(week), prev: prev, ago: ago,
+      lastChange: before ? last.price - before.price : NaN, lastDate: last.date, streak: streak, peak: peak,
+      fx: fx, world: world, premium: (cur / world - 1) * 100};
+  }
+
+  // ---------- rendering ----------
+  function render() {
+    var c = compute(), r = c.rates;
+    var verdict = c.gap <= -1 ? 'cut' : c.gap >= 1 ? 'rise' : 'hold';
+    var lede = '২২ ক্যারেট সোনার দাম প্রতি ভরি ৳' + fmt(r.k22);
+    if (c.peak && c.peak.price > r.k22) lede += ', যা ' + fmtDateOf(c.peak.date) + ' সর্বোচ্চ দামের চেয়ে ৳' + fmt(c.peak.price - r.k22) + ' কম';
+    lede += '। ' + (verdict === 'cut' ? 'বিশ্ববাজারের দাম এখন বাজুসের দামের চেয়ে কম নির্দেশ করছে, তাই আরেক দফা দাম কমার সম্ভাবনা বেশি।'
+      : verdict === 'rise' ? 'বিশ্ববাজারের দাম এখন বাজুসের দামের চেয়ে বেশি নির্দেশ করছে, তাই দাম বাড়তে পারে।'
+      : 'বিশ্ববাজারের দাম বাজুসের দামের কাছাকাছি, তাই আপাতত দাম অপরিবর্তিত থাকতে পারে।');
+    setText('lede', lede);
+
+    var dot = $('liveDot');
+    if (state.spotOk === true) {
+      dot.className = 'dot live';
+      setText('liveText', 'লাইভ বিশ্ববাজার দাম, হালনাগাদ ' + fmtTime(state.spotTime) + ' (' + state.spotSrc + ')');
+    } else if (state.spotOk === false) {
+      dot.className = 'dot off';
+      setText('liveText', 'লাইভ দাম লোড হয়নি, শেষ সংরক্ষিত দাম দেখানো হচ্ছে। ইন্টারনেট সংযোগ দেখুন, অথবা Chrome বা Safari-তে খুলুন।');
+    }
+
+    setText('effDate', fmtDate(r.date, true));
+    setText('k22', fmt(r.k22)); setText('g22', fmt(r.k22 / BHORI_G));
+    setText('k21', fmt(r.k21) + (r.est.k21 ? ' (আনুমানিক)' : '')); setText('g21', fmt(r.k21 / BHORI_G));
+    setText('k18', fmt(r.k18) + (r.est.k18 ? ' (আনুমানিক)' : '')); setText('g18', fmt(r.k18 / BHORI_G));
+    setText('kt', fmt(r.trad) + (r.est.trad ? ' (আনুমানিক)' : '')); setText('gt', fmt(r.trad / BHORI_G));
+    var lc = $('lastChg');
+    if (isFinite(c.lastChange)) {
+      lc.textContent = 'গত পরিবর্তনে (' + fmtDate(c.lastDate) + ') ৳' + fmt(Math.abs(c.lastChange)) + (c.lastChange < 0 ? ' কমেছে।' : ' বেড়েছে।')
+        + (c.streak > 1 ? ' টানা ' + bn(c.streak) + ' দফা কমেছে।' : '');
+      tone(lc, c.lastChange < 0);
+    }
+    if (r.user) setText('rateSource', 'আপনার দেওয়া দাম যুক্ত আছে। "আনুমানিক" চিহ্নিত দাম ২২ ক্যারেট থেকে হিসাব করা।');
+    else if (state.bajus) setText('rateSource', 'বাজুসের দাম প্রতি ঘণ্টায় স্বয়ংক্রিয়ভাবে যাচাই করা হয়' + (state.lastRun ? ' (সর্বশেষ যাচাই: ' + fmtWhen(state.lastRun) + ')' : '') + '।');
+    else setText('rateSource', 'পেজে সংরক্ষিত বাজুস দাম দেখানো হচ্ছে। নতুন দাম থাকলে নিচের ফর্মে লিখুন।');
+
+    setText('verdict', verdict === 'cut' ? 'আরও দাম কমার সম্ভাবনা বেশি' : verdict === 'rise' ? 'দাম বাড়ার সম্ভাবনা আছে' : 'আপাতত দাম স্থির থাকতে পারে');
+    tone($('verdict'), verdict === 'cut' ? true : verdict === 'rise' ? false : null);
+    setText('impliedText', (c.sp.live ? 'লাইভ' : 'সর্বশেষ') + ' বিশ্ববাজার দাম অনুযায়ী বাজুসের স্বাভাবিক হিসাবে ২২ ক্যারেটের দাম হওয়ার কথা প্রায় ৳' + fmt(c.implied)
+      + ', যা আজকের দামের চেয়ে ' + fmt(Math.abs(c.gap), 1) + '% ' + (c.gap < 0 ? 'কম।' : 'বেশি।'));
+    var nc = $('nextChg');
+    nc.textContent = 'প্রায় ৳' + fmt(roundTo(Math.abs(c.implied - r.k22), 10)) + (c.implied < r.k22 ? ' কম' : ' বেশি');
+    tone(nc, c.implied < r.k22);
+    setText('range', '৳' + fmt(roundTo(c.lo, 100)) + ' থেকে ৳' + fmt(roundTo(c.hi, 100)));
+    setText('method', 'বাজুসের গত ' + bn(c.nRatio) + 'টি পরিবর্তনে ২২ ক্যারেট ভরির দাম আগের দিনের প্রতি আউন্স বিশ্ববাজার দামের প্রায় ' + fmt(c.ratio, 1)
+      + ' গুণ ছিল। সম্ভাব্য সীমা হিসাব করা হয়েছে বিশ্ববাজারে সোনার সাম্প্রতিক দৈনিক ওঠানামা (প্রায় ' + fmt(c.sd * 100, 1)
+      + '%) থেকে। সোনার দামের দিক কেউ নিশ্চিতভাবে বলতে পারে না: যুক্তরাষ্ট্রের সুদহারের সিদ্ধান্ত, ডলার বা স্থানীয় সরবরাহ দ্রুত দাম বদলে দিতে পারে।');
+
+    setText('spot', fmt(c.sp.usd, 2));
+    var sc = $('spotChg');
+    if (c.prev) {
+      var d1 = (c.sp.usd / c.prev.usd - 1) * 100;
+      sc.textContent = fmtDateOf(c.prev.date) + ' ক্লোজের চেয়ে ' + fmt(Math.abs(d1), 2) + '% ' + (d1 < 0 ? 'কম' : 'বেশি');
+      tone(sc, d1 < 0);
+    }
+    if (c.ago) {
+      var d7 = (c.sp.usd / c.ago.usd - 1) * 100;
+      setText('spotWeek', fmt(Math.abs(d7), 1) + '% ' + (d7 < 0 ? 'কমেছে' : 'বেড়েছে')); tone($('spotWeek'), d7 < 0);
+      setText('spotWeekNote', fmtDateOf(c.ago.date) + ' ক্লোজ $' + fmt(c.ago.usd, 2) + '-এর তুলনায়');
+    }
+    setText('worldVal', fmt(c.world)); setText('fx', fmt(c.fx, 2)); setText('prem', fmt(c.premium, 1));
+
+    drawBajus(c); drawSpot(c); calc();
+  }
+
+  // ---------- charts (plain SVG) ----------
+  var NS = 'http://www.w3.org/2000/svg';
+  function el(tag, attrs, parent) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function niceStep(span, n) {
+    var raw = span / n, p = Math.pow(10, Math.floor(Math.log10(raw))), m = raw / p;
+    return (m <= 1 ? 1 : m <= 2 ? 2 : m <= 2.5 ? 2.5 : m <= 5 ? 5 : 10) * p;
+  }
+  function makeChart(box, o) {
+    box.replaceChildren();
+    var W = Math.max(280, box.clientWidth), H = o.h || 240, mt = 12, mb = 24, mr = 16;
+    var ys = o.yVals.filter(isFinite), ymin = Math.min.apply(null, ys), ymax = Math.max.apply(null, ys);
+    if (ymin === ymax) { ymin -= 1; ymax += 1; }
+    var step = niceStep(ymax - ymin, 4), y0 = Math.floor(ymin / step) * step, y1 = Math.ceil(ymax / step) * step;
+    var ticks = []; for (var v = y0; v <= y1 + step / 2; v += step) ticks.push(v);
+    var ml = Math.max.apply(null, ticks.map(function (t) { return o.yFmt(t).length; })) * 7 + 12;
+    var t0 = o.t0, t1 = o.t1;
+    function X(t) { return ml + (t - t0) / (t1 - t0) * (W - ml - mr); }
+    function Y(v) { return mt + (1 - (v - y0) / (y1 - y0)) * (H - mt - mb); }
+    var svg = el('svg', {viewBox: '0 0 ' + W + ' ' + H, height: H, role: 'img', 'aria-label': o.aria}, box);
+    ticks.forEach(function (t) {
+      el('line', {x1: ml, x2: W - mr, y1: Y(t), y2: Y(t), stroke: 'var(--grid)'}, svg);
+      var tx = el('text', {x: ml - 8, y: Y(t) + 4, 'text-anchor': 'end'}, svg); tx.textContent = o.yFmt(t);
+    });
+    var nx = Math.max(2, Math.floor((W - ml) / 100));
+    for (var i = 0; i <= nx; i++) {
+      var tt = t0 + (t1 - t0) * i / nx, d = new Date(tt).toISOString().slice(0, 10);
+      var xt = el('text', {x: X(tt), y: H - 6, 'text-anchor': i === 0 ? 'start' : i === nx ? 'end' : 'middle'}, svg); xt.textContent = fmtDate(d);
+    }
+    el('line', {x1: ml, x2: W - mr, y1: H - mb, y2: H - mb, stroke: 'var(--line)'}, svg);
+    return {svg: svg, X: X, Y: Y, W: W, H: H, ml: ml, mr: mr, mt: mt, mb: mb};
+  }
+  function addTip(box, ch, find) {
+    var tip = document.createElement('div'); tip.className = 'tip'; tip.hidden = true; box.appendChild(tip);
+    var mark = el('circle', {r: 5, fill: 'none', 'stroke-width': 2, stroke: 'var(--fg)', opacity: 0}, ch.svg);
+    var hit = el('rect', {x: ch.ml, y: ch.mt, width: ch.W - ch.ml - ch.mr, height: ch.H - ch.mt - ch.mb, fill: 'transparent'}, ch.svg);
+    function move(ev) {
+      var rect = ch.svg.getBoundingClientRect(), mx = (ev.clientX - rect.left) * (ch.W / rect.width);
+      var f = find(mx); if (!f) return;
+      mark.setAttribute('cx', f.x); mark.setAttribute('cy', f.y); mark.setAttribute('opacity', 1);
+      tip.replaceChildren();
+      f.lines.forEach(function (ln, i) { var d = document.createElement(i === 0 ? 'b' : 'div'); d.textContent = ln; tip.appendChild(d); });
+      tip.hidden = false;
+      var px = f.x * (rect.width / ch.W), left = px + 12;
+      if (left + tip.offsetWidth > box.clientWidth) left = px - tip.offsetWidth - 12;
+      tip.style.left = Math.max(0, left) + 'px'; tip.style.top = Math.max(0, f.y - 56) + 'px';
+    }
+    hit.addEventListener('pointermove', move); hit.addEventListener('pointerdown', move);
+    hit.addEventListener('pointerleave', function () { tip.hidden = true; mark.setAttribute('opacity', 0); });
+  }
+  function lakh(v) { return '৳' + bn((v / 1e5).toFixed(2)) + ' লাখ'; }
+
+  function drawBajus(c) {
+    var box = $('chartBajus'); if (!box) return;
+    var last = c.series[c.series.length - 1];
+    var pts = c.series.filter(function (r) { return dayMs(last.date) - dayMs(r.date) <= 60 * DAY; })
+      .map(function (r) { return {t: dayMs(r.date), y: r.price, date: r.date}; });
+    var tEnd = Math.max(dayMs(last.date), dayMs(todayUTC())) + DAY, tImp = tEnd + DAY;
+    var ch = makeChart(box, {yVals: pts.map(function (p) { return p.y; }).concat([c.lo, c.hi, c.implied]), t0: pts[0].t, t1: tImp + DAY / 2,
+      yFmt: lakh, aria: 'বাজুস ২২ ক্যারেট ভরির দাম, প্রতিটি পরিবর্তনে ধাপ আকারে, এবং বিশ্ববাজার অনুযায়ী এখনকার দাম'});
+    var d = 'M' + ch.X(pts[0].t) + ',' + ch.Y(pts[0].y);
+    for (var i = 1; i < pts.length; i++) d += 'H' + ch.X(pts[i].t) + 'V' + ch.Y(pts[i].y);
+    d += 'H' + ch.X(tEnd);
+    el('path', {d: d, fill: 'none', stroke: 'var(--gold)', 'stroke-width': 2.5}, ch.svg);
+    pts.forEach(function (p) { el('circle', {cx: ch.X(p.t), cy: ch.Y(p.y), r: 2.5, fill: 'var(--gold)'}, ch.svg); });
+    if (isFinite(c.implied)) {
+      el('line', {x1: ch.X(tImp), x2: ch.X(tImp), y1: ch.Y(c.lo), y2: ch.Y(c.hi), stroke: 'var(--muted)', 'stroke-width': 2, opacity: .6}, ch.svg);
+      el('circle', {cx: ch.X(tImp), cy: ch.Y(c.implied), r: 6, fill: 'var(--panel)', stroke: 'var(--ring)', 'stroke-width': 2.5}, ch.svg);
+    }
+    addTip(box, ch, function (mx) {
+      if (isFinite(c.implied) && Math.abs(mx - ch.X(tImp)) < 18) {
+        return {x: ch.X(tImp), y: ch.Y(c.implied), lines: ['বিশ্ববাজার অনুযায়ী এখন', '৳' + fmt(c.implied), 'এক সপ্তাহে ৳' + fmt(roundTo(c.lo, 100)) + ' থেকে ৳' + fmt(roundTo(c.hi, 100))]};
+      }
+      var p = pts[0];
+      pts.forEach(function (q) { if (ch.X(q.t) <= mx) p = q; });
+      return {x: mx, y: ch.Y(p.y), lines: [fmtDate(p.date, true) + ' থেকে', 'প্রতি ভরি ৳' + fmt(p.y)]};
+    });
+  }
+
+  function drawSpot(c) {
+    var box = $('chartSpot'); if (!box) return;
+    var lastT = dayMs(c.hist[c.hist.length - 1].date);
+    var pts = c.hist.filter(function (p) { return lastT - dayMs(p.date) <= 92 * DAY; }).map(function (p) { return {t: dayMs(p.date), y: p.usd, date: p.date}; });
+    var liveT = Math.max(lastT, dayMs(todayUTC())), hasLive = c.sp.live;
+    var ch = makeChart(box, {h: 220, yVals: pts.map(function (p) { return p.y; }).concat(hasLive ? [c.sp.usd] : []), t0: pts[0].t, t1: hasLive ? liveT : lastT,
+      yFmt: function (v) { return '$' + fmt(v); }, aria: 'গত তিন মাসে বিশ্ববাজারে প্রতি আউন্স সোনার দাম (মার্কিন ডলার)'});
+    var d = pts.map(function (p, i) { return (i ? 'L' : 'M') + ch.X(p.t) + ',' + ch.Y(p.y); }).join('');
+    el('path', {d: d, fill: 'none', stroke: 'var(--gold)', 'stroke-width': 2}, ch.svg);
+    if (hasLive && liveT > lastT) el('line', {x1: ch.X(lastT), y1: ch.Y(pts[pts.length - 1].y), x2: ch.X(liveT), y2: ch.Y(c.sp.usd), stroke: 'var(--gold)', 'stroke-width': 2, 'stroke-dasharray': '4 4'}, ch.svg);
+    if (hasLive) el('circle', {cx: ch.X(liveT), cy: ch.Y(c.sp.usd), r: 4.5, fill: 'var(--gold)'}, ch.svg);
+    addTip(box, ch, function (mx) {
+      if (hasLive && Math.abs(mx - ch.X(liveT)) < 12) return {x: ch.X(liveT), y: ch.Y(c.sp.usd), lines: ['এখন (লাইভ)', 'প্রতি আউন্স $' + fmt(c.sp.usd, 2)]};
+      var best = pts[0];
+      pts.forEach(function (q) { if (Math.abs(ch.X(q.t) - mx) < Math.abs(ch.X(best.t) - mx)) best = q; });
+      return {x: ch.X(best.t), y: ch.Y(best.y), lines: [fmtDate(best.date, true), 'প্রতি আউন্স $' + fmt(best.y, 2)]};
+    });
+  }
+
+  // ---------- calculator ----------
+  function calc() {
+    var r = latestRates(), g = $('cGrade').value, w = parseFloat($('cWeight').value), u = $('cUnit').value;
+    var grams = u === 'bhori' ? w * BHORI_G : u === 'ana' ? w * BHORI_G / 16 : w;
+    if (!isFinite(grams) || grams < 0) { setText('cValue', '-'); setText('cMaking', '-'); setText('cTotal', '-'); return; }
+    var value = r[g] / BHORI_G * grams;
+    setText('cValue', fmt(value)); setText('cMaking', fmt(value * MAKING)); setText('cTotal', fmt(value * (1 + MAKING)));
+  }
+  ['cGrade', 'cWeight', 'cUnit'].forEach(function (id) { $(id).addEventListener('input', calc); $(id).addEventListener('change', calc); });
+  setText('makingPct', bn(Math.round(MAKING * 100)));
+
+  // ---------- update form ----------
+  $('fDate').value = todayUTC();
+  $('bajusForm').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var e = {date: $('fDate').value, k22: Math.round(+$('f22').value)};
+    [['k21', 'f21'], ['k18', 'f18'], ['trad', 'fTrad']].forEach(function (p) { var v = Math.round(+$(p[1]).value); if (v > 0) e[p[0]] = v; });
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(e.date) || !(e.k22 > 50000)) { setText('fMsg', 'তারিখ এবং ২২ ক্যারেটের প্রতি ভরির দাম লিখুন।'); return; }
+    if (e.date <= bajusData().latest.date) { setText('fMsg', 'এই তারিখের দাম পেজে আগে থেকেই আছে। শুধু নতুন তারিখের দাম লিখুন।'); return; }
+    var list = loadUser().filter(function (x) { return x.date !== e.date; }); list.push(e);
+    var ok = saveUser(list);
+    memoryUser = ok ? null : list;
+    setText('fMsg', ok ? 'সংরক্ষিত হয়েছে। পেজ এখন ' + fmtDate(e.date, true) + ' থেকে ৳' + fmt(e.k22) + ' ধরে হিসাব করছে।'
+      : 'এই ব্রাউজার সংরক্ষণ করতে দেয়নি, তাই পেজ বন্ধ না করা পর্যন্ত দামটি ব্যবহার হবে।');
+    render();
+  });
+  $('fReset').addEventListener('click', function () {
+    memoryUser = null; try { localStorage.removeItem(LS); } catch (e) {}
+    setText('fMsg', 'আপনার দেওয়া দাম মুছে ফেলা হয়েছে।'); render();
+  });
+
+  // ---------- embedded page ----------
+  $('embedBox').addEventListener('toggle', function () {
+    var f = $('embedFrame');
+    if (this.open && !f.getAttribute('src')) f.setAttribute('src', 'https://goldratebangladesh.today/');
+  });
+
+  // ---------- start ----------
+  render();
+  loadBajus(); loadHist(); loadFx(); loadSpot(); loadLastRun();
+  setInterval(function () { if (!document.hidden) loadSpot(); }, 60000);
+  setInterval(function () { if (!document.hidden) { loadBajus(); loadLastRun(); } }, 10 * 60000);
+  setInterval(function () { if (!document.hidden) loadHist(); }, 30 * 60000);
+  setInterval(function () { if (!document.hidden) loadFx(); }, 6 * 3600000);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) { loadSpot(); loadBajus(); } });
+  var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(render, 150); });
+})();
+</script>
+</body>
+</html>
