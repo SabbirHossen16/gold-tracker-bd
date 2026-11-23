@@ -1,12 +1,12 @@
 {
  "source": "BAJUS rates as republished on goldratebangladesh.today, checked hourly",
- "checked_at": "2026-11-22T15:13:06Z",
+ "checked_at": "2026-11-23T12:13:20Z",
  "latest": {
-  "date": "2026-11-22",
-  "k22": 194964,
-  "k21": 186216,
-  "k18": 159972,
-  "trad": 130345
+  "date": "2026-11-23",
+  "k22": 198113,
+  "k21": 189190,
+  "k18": 162538,
+  "trad": 132445
  },
  "history": [
   [
@@ -100,6 +100,10 @@
   [
    "2026-11-22",
    194964
+  ],
+  [
+   "2026-11-23",
+   198113
   ]
  ]
 }
